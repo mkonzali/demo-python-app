@@ -19,7 +19,7 @@ COPY --from=build /wheels /wheels
 RUN pip install --no-cache-dir /wheels/* && rm -rf /wheels
 COPY app ./app
 COPY templates ./templates
-COPY static ./static
+#COPY static ./static
 USER appuser
 EXPOSE 8080
 CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app.main:app"]
